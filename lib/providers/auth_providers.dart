@@ -5,8 +5,11 @@ import 'package:meditation_app/services/auth_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthProvider extends ChangeNotifier {
+  User? _signedInUser;
   final authService = AuthServices();
   String token = "";
+
+  User? get signedInUser => _signedInUser;
 
   Future<String> registration({required User user}) async {
     token = await authService.register(user: user);
@@ -18,9 +21,8 @@ class AuthProvider extends ChangeNotifier {
 
   Future<String> loggingIn({required User user}) async {
     token = await authService.login(user: user);
+    _signedInUser = user; // Set the signed-in user.
     saveTokenInStorage(token);
-
-    /// token to be saved in local storage
     notifyListeners();
     return token;
   }
@@ -45,7 +47,7 @@ class AuthProvider extends ChangeNotifier {
     SharedPreferences shared = await SharedPreferences.getInstance();
     shared.setString("token", '');
     token = "";
-    print(token);
+    _signedInUser = null; // Clear the signed-in user.
     saveTokenInStorage(token);
     notifyListeners();
   }

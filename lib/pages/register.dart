@@ -48,17 +48,31 @@ class _RegisterState extends State<Register> {
           ),
           ElevatedButton(
             onPressed: () {
-              final User user = User(
+              // Check if both username and password are not empty
+              if (usernameController.text.isNotEmpty &&
+                  passwordController.text.isNotEmpty) {
+                final User user = User(
                   username: usernameController.text,
-                  password: passwordController.text);
-              context
-                  .read<AuthProvider>()
-                  .registration(user: user)
-                  .then((token) {
-                if (token.isNotEmpty) {
-                  context.push("/login");
-                }
-              });
+                  password: passwordController.text,
+                );
+                context
+                    .read<AuthProvider>()
+                    .registration(user: user)
+                    .then((token) {
+                  if (token.isNotEmpty) {
+                    // Registration successful, navigate to login screen
+                    context.push("/login");
+                  }
+                });
+              } else {
+                // Show an error message or handle the case where fields are empty
+                // For example, you can show a snackbar:
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Please fill in both username and password.'),
+                  ),
+                );
+              }
             },
             child: const Text("Register"),
           )
