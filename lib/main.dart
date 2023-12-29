@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:meditation_app/pages/meditation.dart';
+import 'package:meditation_app/pages/music.dart';
+import 'package:meditation_app/pages/profile.dart';
 import 'package:meditation_app/pages/register.dart';
 import 'package:meditation_app/pages/home.dart';
 import 'package:meditation_app/pages/login.dart';
+import 'package:meditation_app/pages/tips.dart';
+import 'package:meditation_app/pages/yoga_vids.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,6 +30,36 @@ final GoRouter _router = GoRouter(initialLocation: '/register', routes: [
     path: '/',
     builder: (context, state) {
       return Home();
+    },
+  ),
+  GoRoute(
+    path: '/profile',
+    builder: (context, state) {
+      return Profile();
+    },
+  ),
+  GoRoute(
+    path: '/tips',
+    builder: (context, state) {
+      return TipsPage();
+    },
+  ),
+  GoRoute(
+    path: '/meditation',
+    builder: (context, state) {
+      return MeditationPage();
+    },
+  ),
+  GoRoute(
+    path: '/music',
+    builder: (context, state) {
+      return MusicPage();
+    },
+  ),
+  GoRoute(
+    path: '/yoga_vids',
+    builder: (context, state) {
+      return YogaVideos();
     },
   ),
 ]);

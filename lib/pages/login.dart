@@ -55,6 +55,12 @@ class Login extends StatelessWidget {
             },
             child: Text('Home'),
           ),
+          ElevatedButton(
+            onPressed: () {
+              context.go('/profile');
+            },
+            child: Text('profile'),
+          )
         ],
       ),
     );
