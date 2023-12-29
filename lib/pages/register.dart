@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:meditation_app/models/user.dart';
+import 'package:meditation_app/providers/auth_providers.dart';
+import 'package:provider/provider.dart';
 
-class Register extends StatelessWidget {
-  const Register({super.key});
+class Register extends StatefulWidget {
+  Register({super.key});
+
+  @override
+  State<Register> createState() => _RegisterState();
+}
+
+class _RegisterState extends State<Register> {
+  final usernameController = TextEditingController();
+
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +29,9 @@ class Register extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Email',
+                labelText: 'Username',
               ),
+              controller: usernameController,
             ),
           ),
           SizedBox(height: 5),
@@ -30,13 +43,24 @@ class Register extends StatelessWidget {
                 border: OutlineInputBorder(),
                 labelText: 'Password',
               ),
+              controller: passwordController,
             ),
           ),
           ElevatedButton(
             onPressed: () {
-              context.go('/login');
+              final User user = User(
+                  username: usernameController.text,
+                  password: passwordController.text);
+              context
+                  .read<AuthProvider>()
+                  .registration(user: user)
+                  .then((token) {
+                if (token.isNotEmpty) {
+                  context.push("/login");
+                }
+              });
             },
-            child: Text('Register'),
+            child: const Text("Register"),
           )
         ],
       ),

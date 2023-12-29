@@ -8,9 +8,12 @@ import 'package:meditation_app/pages/home.dart';
 import 'package:meditation_app/pages/login.dart';
 import 'package:meditation_app/pages/tips.dart';
 import 'package:meditation_app/pages/yoga_vids.dart';
+import 'package:meditation_app/providers/auth_providers.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context) => AuthProvider(), child: MyApp()));
 }
 
 final GoRouter _router = GoRouter(initialLocation: '/register', routes: [
