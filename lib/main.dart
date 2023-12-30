@@ -9,6 +9,7 @@ import 'package:meditation_app/pages/login.dart';
 import 'package:meditation_app/pages/tips.dart';
 import 'package:meditation_app/pages/yoga_vids.dart';
 import 'package:meditation_app/providers/auth_providers.dart';
+import 'package:meditation_app/providers/exercises_providers.dart';
 import 'package:meditation_app/providers/tips_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -17,9 +18,8 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => TipsProvider()),
-        ChangeNotifierProvider(
-            create: (_) => AuthProvider()), // Add AuthProvider
-        // Add other providers if needed
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => ExerciseProvider()),
       ],
       child: MyApp(),
     ),
