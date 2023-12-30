@@ -10,6 +10,7 @@ import 'package:meditation_app/pages/tips.dart';
 import 'package:meditation_app/pages/yoga_vids.dart';
 import 'package:meditation_app/providers/auth_providers.dart';
 import 'package:meditation_app/providers/exercises_providers.dart';
+import 'package:meditation_app/providers/music_providers.dart';
 import 'package:meditation_app/providers/tips_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -20,6 +21,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => TipsProvider()),
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => ExerciseProvider()),
+        ChangeNotifierProvider(create: (_) => MusicProvider()),
       ],
       child: MyApp(),
     ),
