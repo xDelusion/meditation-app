@@ -13,8 +13,19 @@ class MyCard extends StatelessWidget {
       onTap: () {
         context.push(pathName);
       },
-      child: Container(
-        child: Text(cardName),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          width: 100,
+          height: 50,
+          decoration: BoxDecoration(
+              color: Colors.amber, borderRadius: BorderRadius.circular(25)),
+          child: Center(
+            child: Text(
+              cardName,
+            ),
+          ),
+        ),
       ),
     );
   }
