@@ -6,7 +6,7 @@ class TipsProvider extends ChangeNotifier {
   List<MyTips> tipsList = [];
   final TipsService _tipsService = TipsService();
 
-  Future<List<MyTips>> gettingTips() async {
+  Future<List<MyTips>> getTips() async {
     try {
       tipsList = await _tipsService.getTips();
       notifyListeners();
@@ -16,15 +16,8 @@ class TipsProvider extends ChangeNotifier {
     }
   }
 
-  void upvotesTip(int index) {
-    // Increment the upvote count for the specified tip index
-    //upvoteCounts[index] = (upvoteCounts[index] ?? 0) + 1;
-    notifyListeners();
+  Future<void> addTip(String text) async {
+    await _tipsService.addTip(text);
+    await getTips();
   }
-  // Map<int, int> upvoteCounts = {}; // Map to store upvote counts for each tip
-
-  //int getUpvoteCount(int index) {
-  // Get the upvote count for the specified tip index
-  // return upvoteCounts[index] ?? 0;
-  // }
 }

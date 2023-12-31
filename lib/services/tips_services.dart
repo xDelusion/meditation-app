@@ -17,6 +17,18 @@ class TipsService {
     }
     return [];
   }
+
+  addTip(String text) async {
+    try {
+      final Response response = await Client.post(
+        "/tips",
+        data: {"text": text},
+      );
+      return response.data;
+    } catch (e) {
+      throw e.toString();
+    }
+  }
 }
 
 //final List<MyTips> listoftips = List.from(response.data).map((e) => MyTips.fromJson(e)).toList();
