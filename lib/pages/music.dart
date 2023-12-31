@@ -41,6 +41,23 @@ class MusicPage extends StatelessWidget {
                     child: ListTile(
                       title: Text(currentMusic.title),
                       subtitle: Text(currentMusic.file.toString()),
+                      trailing: IconButton(
+                        onPressed: () {
+                          bool addedToFavorites =
+                              context.read<MusicProvider>().addToFavorites(
+                                    currentMusic.id,
+                                  );
+
+                          final snackBar = SnackBar(
+                            content: Text(addedToFavorites
+                                ? 'Added to Favorites Successfully!!'
+                                : 'Something went wrong!'),
+                          );
+
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        },
+                        icon: Icon(Icons.favorite),
+                      ),
                     ),
                   );
                 },

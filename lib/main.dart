@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:meditation_app/pages/favorites.dart';
 import 'package:meditation_app/pages/meditation.dart';
 import 'package:meditation_app/pages/music.dart';
 import 'package:meditation_app/pages/profile.dart';
@@ -74,7 +75,13 @@ final GoRouter _router = GoRouter(initialLocation: '/register', routes: [
   GoRoute(
     path: '/yoga_vids',
     builder: (context, state) {
-      return YogaVideos();
+      return YogaPage();
+    },
+  ),
+  GoRoute(
+    path: '/favorites',
+    builder: (context, state) {
+      return Favorites();
     },
   ),
 ]);

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:meditation_app/models/exercises.dart';
 import 'package:meditation_app/models/music.dart';
-import 'package:meditation_app/models/tips.dart';
-import 'package:meditation_app/services/exercises_services.dart';
 import 'package:meditation_app/services/music_services.dart';
-import 'package:meditation_app/services/tips_services.dart';
 
 class MusicProvider extends ChangeNotifier {
   List<Music> musicList = [];
+  List<Music> favoritesList = [];
+
   final MusicService _musicService = MusicService();
 
   Future<List<Music>> gettingMusic() async {
@@ -18,5 +16,21 @@ class MusicProvider extends ChangeNotifier {
     } catch (e) {
       throw e.toString();
     }
+  }
+
+  bool addToFavorites(int musicId) {
+    Music music = getMusicById(musicId);
+
+    if (music != null) {
+      favoritesList.add(music); // Add the Music object to favorites list
+      notifyListeners();
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Music getMusicById(int musicId) {
+    return musicList.firstWhere((music) => music.id == musicId);
   }
 }

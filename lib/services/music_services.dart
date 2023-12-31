@@ -1,7 +1,4 @@
-import 'package:dio/dio.dart';
-import 'package:meditation_app/models/exercises.dart';
 import 'package:meditation_app/models/music.dart';
-import 'package:meditation_app/models/tips.dart';
 import 'package:meditation_app/services/client.dart';
 
 class MusicService {
@@ -20,5 +17,3 @@ class MusicService {
     return [];
   }
 }
-
-//final List<MyTips> listoftips = List.from(response.data).map((e) => MyTips.fromJson(e)).toList();

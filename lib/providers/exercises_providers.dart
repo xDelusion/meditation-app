@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meditation_app/models/exercises.dart';
-import 'package:meditation_app/models/tips.dart';
 import 'package:meditation_app/services/exercises_services.dart';
-import 'package:meditation_app/services/tips_services.dart';
 
 class ExerciseProvider extends ChangeNotifier {
   List<DataExercises> exerciseList = [];
