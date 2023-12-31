@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:meditation_app/models/user.dart';
+import 'package:meditation_app/providers/tips_provider.dart';
 import 'package:meditation_app/services/client.dart';
 
 class AuthServices {

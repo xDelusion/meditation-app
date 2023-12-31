@@ -31,11 +31,11 @@ class Home extends StatelessWidget {
             cardName: "Yoga Videos",
             pathName: '/yoga_vids',
           ),
-          MyCard(
-            color: Colors.cyan.shade300,
-            cardName: "FAVORITES",
-            pathName: '/favorites',
-          ),
+          // MyCard(
+          //   color: Colors.cyan.shade300,
+          //   cardName: "FAVORITES",
+          //   pathName: '/favorites',
+          // ),
         ]));
   }
 }

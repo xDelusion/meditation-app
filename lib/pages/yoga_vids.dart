@@ -10,7 +10,7 @@ class YogaPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Meditation'),
+        title: Text('Yoga Videos'),
       ),
       body: FutureBuilder(
         future: context.read<ExerciseProvider>().gettingExercises(),

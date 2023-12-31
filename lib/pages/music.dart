@@ -40,7 +40,8 @@ class MusicPage extends StatelessWidget {
                   return Card(
                     child: ListTile(
                       title: Text(currentMusic.title),
-                      subtitle: Text(currentMusic.file.toString()),
+                      //subtitle: Text(currentMusic.file.toString()),
+
                       trailing: IconButton(
                         onPressed: () {
                           bool addedToFavorites =
@@ -50,7 +51,7 @@ class MusicPage extends StatelessWidget {
 
                           final snackBar = SnackBar(
                             content: Text(addedToFavorites
-                                ? 'Added to Favorites Successfully!!'
+                                ? 'track ${currentMusic.id} to Favorites Successfully!!'
                                 : 'Something went wrong!'),
                           );
 

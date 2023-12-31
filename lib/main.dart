@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:meditation_app/pages/favorites.dart';
 import 'package:meditation_app/pages/meditation.dart';
 import 'package:meditation_app/pages/music.dart';
+import 'package:meditation_app/pages/mytips.dart';
+import 'package:meditation_app/pages/navbar.dart';
 import 'package:meditation_app/pages/profile.dart';
 import 'package:meditation_app/pages/register.dart';
 import 'package:meditation_app/pages/home.dart';
@@ -11,6 +13,7 @@ import 'package:meditation_app/pages/tips.dart';
 import 'package:meditation_app/pages/yoga_vids.dart';
 import 'package:meditation_app/providers/auth_providers.dart';
 import 'package:meditation_app/providers/exercises_providers.dart';
+import 'package:meditation_app/providers/meditation_providers.dart';
 import 'package:meditation_app/providers/music_providers.dart';
 import 'package:meditation_app/providers/tips_provider.dart';
 import 'package:provider/provider.dart';
@@ -23,6 +26,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => ExerciseProvider()),
         ChangeNotifierProvider(create: (_) => MusicProvider()),
+        ChangeNotifierProvider(create: (_) => MeditationProvider()),
       ],
       child: MyApp(),
     ),
@@ -40,6 +44,12 @@ final GoRouter _router = GoRouter(initialLocation: '/register', routes: [
     path: '/login',
     builder: (context, state) {
       return Login();
+    },
+  ),
+  GoRoute(
+    path: '/navbar',
+    builder: (context, state) {
+      return NavBarPage();
     },
   ),
   GoRoute(
@@ -84,6 +94,12 @@ final GoRouter _router = GoRouter(initialLocation: '/register', routes: [
       return Favorites();
     },
   ),
+  // GoRoute(
+  //   path: '/mytips',
+  //   builder: (context, state) {
+  //     return MyTipsPage();
+  //   },
+  // ),
 ]);
 
 class MyApp extends StatelessWidget {
@@ -93,6 +109,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       routerConfig: _router,
     );
   }

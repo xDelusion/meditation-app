@@ -59,7 +59,7 @@ class Login extends StatelessWidget {
                   password: _passwordController.text);
               context.read<AuthProvider>().loggingIn(user: user).then((token) {
                 if (token.isNotEmpty) {
-                  context.push("/");
+                  context.push("/navbar");
                 }
               });
             },

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meditation_app/models/tips.dart';
 import 'package:meditation_app/providers/tips_provider.dart';
+import 'package:meditation_app/services/tips_services.dart';
 import 'package:provider/provider.dart';
 
 final _textEditingController = TextEditingController();
@@ -24,6 +25,13 @@ class _TipsPageState extends State<TipsPage> {
               child: Container(child: Text('+ Add Review')))),
       appBar: AppBar(
         title: Text('Tips'),
+        actions: [
+          ElevatedButton(
+              onPressed: () {
+                context.go('/mytips');
+              },
+              child: const Text('My Tips'))
+        ],
       ),
       body: FutureBuilder(
         future: context.read<TipsProvider>().getTips(),
@@ -77,41 +85,32 @@ Future<void> _dialogBuilder(BuildContext context) {
     builder: (BuildContext context) {
       return AlertDialog(
         title: Text('Add Tips'),
-        actions: <Widget>[
-          TextField(
-            controller: _textEditingController,
-            keyboardType: TextInputType.multiline,
-            textInputAction: TextInputAction.newline,
-            minLines: null,
-            maxLines: null,
-            decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Share your tips...',
-                labelStyle: TextStyle(color: Colors.grey)),
+        content: TextField(
+          controller: _textEditingController,
+          keyboardType: TextInputType.multiline,
+          textInputAction: TextInputAction.newline,
+          minLines: null,
+          maxLines: null,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: 'Share your tips...',
+            labelStyle: TextStyle(color: Colors.grey),
           ),
-          Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-            TextButton(
-              style: TextButton.styleFrom(
-                textStyle: Theme.of(context).textTheme.labelLarge,
-              ),
-              child: Text('Cancel'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            TextButton(
-              style: TextButton.styleFrom(
-                textStyle: Theme.of(context).textTheme.labelLarge,
-              ),
-              child: Text('Add'),
-              onPressed: () {
-                context
-                    .read<TipsProvider>()
-                    .addTip(_textEditingController.text);
-                context.pop();
-              },
-            ),
-          ]),
+        ),
+        actions: [
+          TextButton(
+            child: Text('Cancel'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          TextButton(
+            child: Text('Add'),
+            onPressed: () {
+              context.read<TipsProvider>().addTip(_textEditingController.text);
+              Navigator.of(context).pop();
+            },
+          ),
         ],
       );
     },
