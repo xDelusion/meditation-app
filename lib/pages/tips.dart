@@ -43,15 +43,24 @@ class _TipsPageState extends State<TipsPage> {
                       context.watch<TipsProvider>().tipsList[index];
 
                   return Padding(
-                    padding: EdgeInsets.only(
-                        top: 15, bottom: 15, right: 115, left: 15),
-                    child: Card(
-                      child: ListTile(
-                        title: Text(currentTip.author),
-                        subtitle: Text(currentTip.text),
-                      ),
-                    ),
-                  );
+                      padding: EdgeInsets.only(
+                          top: 15, bottom: 15, right: 115, left: 15),
+                      child: Card(
+                        child: ListTile(
+                          title: Text(currentTip.author),
+                          subtitle: Text(currentTip.text),
+                          trailing: Wrap(children: [
+                            IconButton(
+                              onPressed: () {
+                                context
+                                    .read<TipsProvider>()
+                                    .deleteTip(currentTip.id);
+                              },
+                              icon: Icon(Icons.delete),
+                            ),
+                          ]),
+                        ),
+                      ));
                 },
               );
             },

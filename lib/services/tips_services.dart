@@ -29,6 +29,17 @@ class TipsService {
       throw e.toString();
     }
   }
+
+  deleteTip(int id) async {
+    try {
+      final Response response = await Client.delete(
+        "/tips/$id",
+      );
+      return response.data;
+    } catch (e) {
+      throw e.toString();
+    }
+  }
 }
 
 //final List<MyTips> listoftips = List.from(response.data).map((e) => MyTips.fromJson(e)).toList();
