@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:meditation_app/models/user.dart';
 import 'package:meditation_app/services/auth_services.dart';
 
@@ -10,6 +11,18 @@ class AuthProvider extends ChangeNotifier {
   String token = "";
 
   User? get signedInUser => _signedInUser;
+
+  User getUserFromToken() {
+    Map<String, dynamic> decodedToken = JwtDecoder.decode(token);
+
+    User user = User(
+        id: decodedToken['id'],
+        username: decodedToken['username'],
+        password: decodedToken['password']);
+    //print(user.imagePath);
+
+    return user;
+  }
 
   Future<String> registration({required User user}) async {
     token = await authService.register(user: user);
@@ -30,6 +43,17 @@ class AuthProvider extends ChangeNotifier {
   Future<void> saveTokenInStorage(String token) async {
     SharedPreferences shared = await SharedPreferences.getInstance();
     shared.setString('token', token);
+  }
+
+  Future<String> getUsernameFromToken() async {
+    SharedPreferences shared = await SharedPreferences.getInstance();
+    token = shared.getString('token') ?? "";
+
+    Map<String, dynamic> decodedToken = JwtDecoder.decode(token);
+
+    String username = decodedToken['username'];
+
+    return username;
   }
 
   //readTokenFromStorage

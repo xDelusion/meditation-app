@@ -6,11 +6,13 @@ class MyCard extends StatelessWidget {
       {super.key,
       required this.cardName,
       required this.pathName,
-      required this.color});
+      required this.color,
+      required this.image});
 
   final String cardName;
   final String pathName;
   final Color color;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +20,21 @@ class MyCard extends StatelessWidget {
       onTap: () {
         context.push(pathName);
       },
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          width: 100,
-          height: 50,
-          decoration: BoxDecoration(
-              color: color, borderRadius: BorderRadius.circular(25)),
-          child: Center(
-            child: Text(
-              cardName,
+      child: Container(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            width: 180,
+            height: 150,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: NetworkImage(image), fit: BoxFit.fill),
+                color: color,
+                borderRadius: BorderRadius.circular(25)),
+            child: Center(
+              child: Text(
+                cardName,
+              ),
             ),
           ),
         ),

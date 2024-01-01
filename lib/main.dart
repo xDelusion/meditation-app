@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:meditation_app/pages/favorites.dart';
 import 'package:meditation_app/pages/meditation.dart';
 import 'package:meditation_app/pages/music.dart';
-import 'package:meditation_app/pages/mytips.dart';
 import 'package:meditation_app/pages/navbar.dart';
 import 'package:meditation_app/pages/profile.dart';
 import 'package:meditation_app/pages/register.dart';
@@ -15,6 +14,7 @@ import 'package:meditation_app/providers/auth_providers.dart';
 import 'package:meditation_app/providers/exercises_providers.dart';
 import 'package:meditation_app/providers/meditation_providers.dart';
 import 'package:meditation_app/providers/music_providers.dart';
+import 'package:meditation_app/providers/theme_provider.dart';
 import 'package:meditation_app/providers/tips_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -27,6 +27,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => ExerciseProvider()),
         ChangeNotifierProvider(create: (_) => MusicProvider()),
         ChangeNotifierProvider(create: (_) => MeditationProvider()),
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
       ],
       child: MyApp(),
     ),
@@ -111,6 +112,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routerConfig: _router,
+      theme: Provider.of<ThemeProvider>(context).getTheme(),
     );
   }
 }

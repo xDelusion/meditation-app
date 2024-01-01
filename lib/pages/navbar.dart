@@ -22,13 +22,14 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 5,
         title: Text(
-          'Meditation App',
+          'Meditation',
         ),
-        actions: [
-          Text('username'),
-          IconButton(icon: Icon(Icons.account_circle), onPressed: () {})
-        ],
+        // actions: [
+        //   Text('username'),
+        //   IconButton(icon: Icon(Icons.account_circle), onPressed: () {})
+        // ],
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),

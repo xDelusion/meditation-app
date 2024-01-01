@@ -19,15 +19,6 @@ class Login extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Email',
-              ),
-            ),
-          ),
           SizedBox(height: 5),
           Padding(
             padding: const EdgeInsets.all(20.0),
@@ -65,18 +56,6 @@ class Login extends StatelessWidget {
             },
             child: Text('Login'),
           ),
-          ElevatedButton(
-            onPressed: () {
-              context.go('/');
-            },
-            child: Text('Home'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              context.go('/profile');
-            },
-            child: Text('profile'),
-          )
         ],
       ),
     );
