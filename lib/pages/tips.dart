@@ -52,7 +52,7 @@ class _TipsPageState extends State<TipsPage> {
 
                   return Padding(
                       padding: EdgeInsets.only(
-                          top: 15, bottom: 15, right: 115, left: 15),
+                          top: 4, bottom: 1, right: 15, left: 15),
                       child: Card(
                         child: ListTile(
                           title: Text(currentTip.author),
