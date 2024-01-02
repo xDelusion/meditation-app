@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:meditation_app/pages/favorites.dart';
 import 'package:meditation_app/pages/meditation.dart';
 import 'package:meditation_app/pages/music.dart';
+import 'package:meditation_app/pages/mytips.dart';
 import 'package:meditation_app/pages/navbar.dart';
 import 'package:meditation_app/pages/profile.dart';
 import 'package:meditation_app/pages/register.dart';
@@ -47,6 +48,7 @@ final GoRouter _router = GoRouter(initialLocation: '/register', routes: [
       return Login();
     },
   ),
+
   GoRoute(
     path: '/navbar',
     builder: (context, state) {
@@ -106,7 +108,6 @@ final GoRouter _router = GoRouter(initialLocation: '/register', routes: [
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(

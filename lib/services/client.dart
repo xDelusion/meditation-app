@@ -54,7 +54,3 @@ class Client {
     }
   }
 }
-
-// class NamedRoutes {
-//   static final String login = "signin";
-// }

@@ -49,7 +49,7 @@ class Favorites extends StatelessWidget {
                           title: Text(currentMusic.title),
                           subtitle: Text(
                             currentMusic.file.toString(),
-                            maxLines: 3,
+                            maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),

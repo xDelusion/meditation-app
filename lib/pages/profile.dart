@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meditation_app/models/user.dart';
 import 'package:meditation_app/providers/auth_providers.dart';
 import 'package:provider/provider.dart';
@@ -21,10 +22,8 @@ class Profile extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 70,
-
                     backgroundImage: NetworkImage(
                         'https://cucucovers.com/cdn/shop/products/000590a-6_8c6dc7b8-8a00-4f32-82c4-30e4cfa1800b_1500x.png?v=1581094062'),
-                    // Replace the URL above with the actual URL of the user's avatar.
                   ),
                   SizedBox(height: 20),
                   if (signedInUser != null)
@@ -32,7 +31,11 @@ class Profile extends StatelessWidget {
                       'Username: ${signedInUser.username}',
                       style: TextStyle(fontSize: 18),
                     ),
-                  // Add other user information widgets as needed.
+                  ElevatedButton(
+                      onPressed: () {
+                        context.go('/register');
+                      },
+                      child: const Text('Sign Out'))
                 ],
               ),
             ),

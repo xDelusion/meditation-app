@@ -38,6 +38,8 @@ class MyTips {
         downvotes: List<dynamic>.from(json['downvotes'] as List<dynamic>));
   }
 
+  get createdAt => null;
+
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
     _data['id'] = id;
@@ -47,6 +49,13 @@ class MyTips {
     _data['downvotes'] = downvotes;
     return _data;
   }
+
+  MyTips.fromMap(Map<String, dynamic> map)
+      : id = map['id'],
+        text = map['text'],
+        author = map['author'],
+        upvotes = List<dynamic>.from(map['upvotes']),
+        downvotes = List<dynamic>.from(map['downvotes']);
 
   // Method to handle upvoting
   void upvoteTip() {

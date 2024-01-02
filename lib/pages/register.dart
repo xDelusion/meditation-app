@@ -13,17 +13,26 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
   final usernameController = TextEditingController();
-
   final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Meditation App'),
+        title: Text(
+          'Meditation App',
+          textAlign: TextAlign.center,
+        ),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Image.network(
+            'https://cdn-icons-png.flaticon.com/512/5266/5266956.png',
+            width: 200,
+            height: 200,
+            fit: BoxFit.contain,
+          ),
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: TextField(
@@ -34,7 +43,7 @@ class _RegisterState extends State<Register> {
               controller: usernameController,
             ),
           ),
-          SizedBox(height: 5),
+          SizedBox(height: 2),
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: TextField(
@@ -60,13 +69,10 @@ class _RegisterState extends State<Register> {
                     .registration(user: user)
                     .then((token) {
                   if (token.isNotEmpty) {
-                    // Registration successful, navigate to login screen
                     context.push("/login");
                   }
                 });
               } else {
-                // Show an error message or handle the case where fields are empty
-                // For example, you can show a snackbar:
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text('Please fill in both username and password.'),
@@ -75,7 +81,12 @@ class _RegisterState extends State<Register> {
               }
             },
             child: const Text("Register"),
-          )
+          ),
+          ElevatedButton(
+              onPressed: () {
+                context.go('/login');
+              },
+              child: const Text('Sign In'))
         ],
       ),
     );

@@ -26,10 +26,6 @@ class _NavBarPageState extends State<NavBarPage> {
         title: Text(
           'Meditation',
         ),
-        // actions: [
-        //   Text('username'),
-        //   IconButton(icon: Icon(Icons.account_circle), onPressed: () {})
-        // ],
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),

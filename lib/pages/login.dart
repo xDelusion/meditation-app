@@ -8,7 +8,6 @@ class Login extends StatelessWidget {
   Login({super.key});
 
   final _usernameController = TextEditingController();
-
   final _passwordController = TextEditingController();
 
   @override
@@ -18,13 +17,19 @@ class Login extends StatelessWidget {
         title: Text('Meditation App'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(height: 5),
+          Image.network(
+            'https://cdn-icons-png.flaticon.com/512/5266/5266956.png',
+            width: 200,
+            height: 200,
+            fit: BoxFit.contain,
+          ),
+          SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: TextField(
               controller: _usernameController,
-              obscureText: true,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Username',
@@ -46,8 +51,9 @@ class Login extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               final User user = User(
-                  username: _usernameController.text,
-                  password: _passwordController.text);
+                username: _usernameController.text,
+                password: _passwordController.text,
+              );
               context.read<AuthProvider>().loggingIn(user: user).then((token) {
                 if (token.isNotEmpty) {
                   context.push("/navbar");
