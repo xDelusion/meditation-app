@@ -18,7 +18,6 @@ class TipsProvider extends ChangeNotifier {
     try {
       tipsList = await _tipsService.getTips();
 
-      // Sorting is now moved outside of the getTips method
       sortTips();
 
       notifyListeners();
@@ -60,5 +59,15 @@ class TipsProvider extends ChangeNotifier {
     } catch (e) {
       print("Error deleting tip: $e");
     }
+  }
+
+  Future<void> upvoteTip(int id) async {
+    await _tipsService.upVote(id);
+    await getTips();
+  }
+
+  Future<void> downvoteTip(int id) async {
+    await _tipsService.downVote(id);
+    await getTips();
   }
 }

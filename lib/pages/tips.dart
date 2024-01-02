@@ -30,17 +30,16 @@ class _TipsPageState extends State<TipsPage> {
       appBar: AppBar(
         title: Text('Tips'),
         actions: [
-          ElevatedButton(
-            onPressed: () {
-              context.go('/mytips');
-            },
-            child: const Text('My Tips'),
-          ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //     context.go('/mytips');
+          //   },
+          //   child: const Text('My Tips'),
+          // ),
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
-              setState(
-                  () {}); // Add the logic to navigate to the profile page or open a drawer, etc.
+              setState(() {});
             },
           ),
           IconButton(
@@ -100,13 +99,26 @@ class _TipsPageState extends State<TipsPage> {
                         child: ListTile(
                           title: Text(currentTip.author),
                           subtitle: Text(currentTip.text),
-                          trailing: IconButton(
-                            onPressed: () {
-                              context
-                                  .read<TipsProvider>()
-                                  .deleteTip(currentTip.id);
-                            },
-                            icon: Icon(Icons.delete),
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(Icons.thumb_up),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(Icons.thumb_down),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  context
+                                      .read<TipsProvider>()
+                                      .deleteTip(currentTip.id);
+                                },
+                                icon: Icon(Icons.delete),
+                              ),
+                            ],
                           ),
                         ),
                       ),
